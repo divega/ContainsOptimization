@@ -19,7 +19,7 @@ namespace ContainsOptimization
                 Test("standard Contains", context.People.Where(p => (ids.Contains(p.Id))));
                 Test("Parameter rewrite", context.People.In(ids, p => p.Id));
                 Test("Split function", context.People.FromSql($"select * from People p where p.Id in(select value from string_split({string.Join(",", ids)}, ','))"));
-                Test("table-valued parameter", context.People.FromSql($"select * from People p where p.Id in(select * from {context.CreateTableValuedParameter(ids, "p0")})"));
+                Test("table-valued parameter", context.People.FromSql($"select * from People p where p.Id in(select * from {context.CreateTableValuedParameter(ids, "@p0")})"));
             }
         }
 
