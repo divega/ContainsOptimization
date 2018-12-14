@@ -56,7 +56,7 @@ namespace ContainsOptimization
             context.Database.ExecuteSqlCommand(createStatement);
 #pragma warning restore EF1000 // Possible SQL injection vulnerability.
 
-            var tvp = new TvpBuilder("dbo.IdTable", new SqlMetaData(columnName, sqlDbType));
+            var tvp = new TvpBuilder(tableType, new SqlMetaData(columnName, sqlDbType));
             foreach(var value in source)
             {
                 tvp.AddRow(value);
