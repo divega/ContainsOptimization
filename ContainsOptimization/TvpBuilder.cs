@@ -57,7 +57,9 @@ namespace ContainsOptimization
 #pragma warning restore EF1000 // Possible SQL injection vulnerability.
 
             var tvp = new TvpBuilder(tableType, new SqlMetaData(columnName, sqlDbType));
-            foreach(var value in source)
+
+            // TO-DO: implement streaming
+            foreach (var value in source)
             {
                 tvp.AddRow(value);
             }
